@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurgoFinder - Equipo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Librería de iconos de FontAwesome -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden; /* Evita scroll horizontal */
+        }
+        body {
+            background-image: url('fondo.png');
+            background-size: cover;
+            background-attachment: fixed; /* Efecto parallax */
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh; /* Mínima altura para cada sección */
+        }
+        .hero-text {
+            font-size: 2rem;
+            margin: 2rem 0;
+            color: white;
+        }
+        .hero-title {
+            font-size: 4rem;
+            margin: 2rem 0;
+            color: white;
+        }
+        .profile-card {
+            background-color: rgba(33, 150, 243, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            max-width: 400px;
+            margin-top: 2rem;
+        }
+        .profile-card h2, .profile-card h4 {
+            margin-bottom: 1rem;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%; /* Mostrar imagen completa */
+            object-fit: contain; /* Contener la imagen completa sin recortes */
+        }
+        .info-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            max-width: 800px;
+            text-align: left; /* Alinear el texto a la izquierda */
+        }
+        .navbar {
+            background-color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            position: fixed; /* Navbar fijo */
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Asegura que el navbar esté sobre otros elementos */
+        }
+        .row-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alinea las tarjetas en la parte superior */
+            gap: 2rem; /* Espacio entre las columnas */
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 6rem; /* Espacio para que no se sobreponga al navbar */
+        }
+        .column {
+            flex: 1; /* Ajuste flexible para ambas columnas */
+        }
+        .equipo-title {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .info-description {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-top: 1rem;
+        }
+        .back-button {
+            position: absolute;
+            top: 80px; /* Debajo del navbar */
+            left: 20px;
+            background-color: #f8f9fa;
+            border: none;
+            color: #007bff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #e2e6ea;
+        }
+        .instagram-button {
+            background-color: #E1306C;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+            text-decoration: none; /* Elimina el subrayado */
+        }
+        .instagram-button i {
+            margin-right: 0.5rem;
+        }
+        .instagram-button:hover {
+            background-color: #c82f63;
+            text-decoration: none; /* Elimina el subrayado al hacer hover */
+        }
+
+        /* Estilo para la sección de misión y visión */
+        .mission-vision-section {
+            display: flex;
+            justify-content: center;
+            align-items: stretch; /* Asegura que ambas columnas tengan la misma altura */
+            gap: 2rem; /* Espacio entre las columnas */
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .mission, .vision {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column; /* Alinea título y texto */
+            justify-content: flex-start;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            min-height: 200px; /* Altura mínima igual para ambas columnas */
+        }
+        .mission h3, .vision h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            flex-shrink: 0; /* Asegura que el título siempre esté en la misma posición */
+        }
+        .mission p, .vision p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-top: auto; /* Alinea el texto después del título */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="color: gold;">F<span style="color: #154580;">urgo</span><span style="color: gold;">F</span><span style="color: #154580;">inder</span></a>
+        </div>
+    </nav>
+
+    <!-- Sección de bienvenida -->
+    <section class="container" id="welcome-section">
+        <div class="hero-title fw-bold">FurgoFinder</div>
+        <div class="hero-text">
+            ¡Bienvenido a FurgoFinder! Tu aliado confiable para garantizar la seguridad y el apoyo en el traslado de niños y niñas hacia su establecimiento educacional. Descubre cupos disponibles y contrata un furgón escolar fácilmente a través de nuestra aplicación móvil y página web. ¡Priorizamos la tranquilidad de tu familia en cada viaje!
+        </div>
+
+        <!-- Sección de misión y visión -->
+        <div class="mission-vision-section">
+            <div class="mission">
+                <h3>Misión</h3>
+                <p>Nuestra misión es facilitar la contratación de furgones escolares, conectando a apoderados y conductores mediante una plataforma digital que ofrezca seguridad, confianza y eficiencia. A través de nuestra aplicación, simplificamos el proceso de búsqueda y contratación de transporte escolar, brindando una experiencia confiable para los estudiantes y sus familias.
+                </p>
+            </div>
+            <div class="vision">
+                <h3>Visión</h3>
+                <p>Nuestra visión es ser la plataforma líder en el transporte escolar en Chile, mejorando continuamente la seguridad, comodidad y confianza en el traslado de estudiantes. Aspiramos a convertirnos en la opción preferida para las familias, creando una comunidad sólida de conductores y apoderados comprometidos con el bienestar de los niños.</p>
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-3" onclick="showProfileSection()">Conoce al Equipo</button>
+        <!-- Botón de Instagram -->
+        <a class="instagram-button" href="https://www.instagram.com/furgofinder" target="_blank">
+            <i class="fab fa-instagram"></i> Síguenos en Instagram
+        </a>
+    </section>
+
+    <!-- Sección del perfil del equipo con información adicional al lado -->
+    <section class="container" id="profile-section" style="display: none;">
+        <button class="back-button" onclick="showWelcomeSection()">Volver Atrás</button>
+        <div class="equipo-title">Equipo de FurgoFinder</div>
+        <div class="row-content">
+            <!-- Columna de perfil y carrusel -->
+            <div class="column">
+                <div class="profile-card" id="profile-card">
+                    <h2 id="profile-name">Carla González</h2>
+                    <h4 id="profile-cargo">Backend</h4>
+                    <!-- Carrusel de imágenes -->
+                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-name="Carla González" data-cargo="Backend" data-description="Carla Gonzalez es la desarrolladora backend. Ella se encargará de la arquitectura y lógica de FurgoFinder, asegurando que todos los datos se gestionen de manera eficiente y segura. Carla será responsable de implementar los sistemas que soportan las funciones de la app, incluyendo la integración con servicios de geolocalización y la gestión segura de la información del usuario." data-image="1.png">
+                                <img src="1.png" class="d-block w-100" alt="Carla González">
+                            </div>
+                            <div class="carousel-item" data-name="Emilio Mariani" data-cargo="Ciberseguridad" data-description="Emilio Mariani es nuestro especialista en ciberseguridad. Su labor es proteger FurgoFinder, garantizando la seguridad y privacidad de la información de nuestros usuarios. Emilio implementará medidas de seguridad robustas para asegurar que los datos sensibles, como los perfiles de conductores y los registros de pago, estén siempre protegidos contra posibles amenazas." data-image="2.png">
+                                <img src="2.png" class="d-block w-100" alt="Emilio Mariani">
+                            </div>
+                            <div class="carousel-item" data-name="Catalina Durán" data-cargo="Diseñadora UX/UI" data-description="Catalina Durán se encarga del diseño UX/UI. Su misión es crear una experiencia de usuario óptima y visualmente atractiva para que FurgoFinder sea fácil y agradable de usar. Catalina trabajará en la creación de una interfaz que facilite la navegación y acceso a las funcionalidades clave, como el seguimiento del furgón, valoración del servicio y gestión de reservas." data-image="3.png">
+                                <img src="3.png" class="d-block w-100" alt="Catalina Durán">
+                            </div>
+                            <div class="carousel-item" data-name="Camilo Silva" data-cargo="Desarrollador Móvil" data-description="Camilo Silva es nuestro experto en desarrollo móvil. Se encargará de crear la app FurgoFinder, asegurando una experiencia fluida y funcional para todos los usuarios. Su trabajo incluye la implementación de funcionalidades como alertas de llegada y salida, reservas de cupos y comunicación directa, todo diseñado para mejorar la seguridad y eficiencia en el transporte escolar." data-image="4.png">
+                                <img src="4.png" class="d-block w-100" alt="Camilo Silva">
+                            </div>
+                            <div class="carousel-item" data-name="Paulo Gómez" data-cargo="Desarrollador Web" data-description="Paulo Gómez es el desarrollador frontend web de nuestro equipo. Su tarea es diseñar y construir la interfaz web de FurgoFinder, garantizando que sea intuitiva y atractiva para los usuarios. Paulo se centrará en ofrecer una plataforma web que permita a los apoderados y conductores gestionar de manera eficiente la información del transporte escolar, desde perfiles de conductores hasta registros de pagos." data-image="5.png">
+                                <img src="5.png" class="d-block w-100" alt="Paulo Gómez">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Columna de información adicional -->
+            <div class="column">
+                <div class="info-section" id="info-section">
+                    <div class="info-title" id="info-title">Backend</div>
+                    <div class="info-description" id="info-description">
+                        Carla Gonzalez es la desarrolladora backend. Ella se encargará de la arquitectura y lógica de FurgoFinder, asegurando que todos los datos se gestionen de manera eficiente y segura. Carla será responsable de implementar los sistemas que soportan las funciones de la app, incluyendo la integración con servicios de geolocalización y la gestión segura de la información del usuario.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script> <!-- Librería de iconos de FontAwesome -->
+    <script>
+        // Función para mostrar la sección de perfil y ocultar la sección de bienvenida
+        function showProfileSection() {
+            document.getElementById('welcome-section').style.display = 'none';
+            document.getElementById('profile-section').style.display = 'flex';
+        }
+
+        // Función para mostrar la sección de bienvenida y ocultar la sección de perfil
+        function showWelcomeSection() {
+            document.getElementById('profile-section').style.display = 'none';
+            document.getElementById('welcome-section').style.display = 'flex';
+        }
+
+        // Función para actualizar el perfil y la información adicional
+        function updateProfileInfo(element) {
+            const name = element.getAttribute('data-name');
+            const cargo = element.getAttribute('data-cargo');
+            const image = element.getAttribute('data-image');
+            const description = element.getAttribute('data-description');
+
+            document.getElementById('profile-name').textContent = name;
+            document.getElementById('profile-cargo').textContent = cargo;
+            document.getElementById('info-title').textContent = cargo;
+            document.getElementById('info-description').textContent = description;
+        }
+
+        // Evento para cambiar la información al cambiar de slide en el carrusel
+        document.querySelector('#carouselExample').addEventListener('slid.bs.carousel', function (event) {
+            const activeElement = event.relatedTarget;
+            updateProfileInfo(activeElement);
+        });
+    </script>
+</body>
+</html>
